@@ -1,1 +1,7 @@
 /.metadata/
+/DB1/nbproject/private/
+/DB1/DB1-war/nbproject/private/
+/DB1/DB1-ejb/nbproject/private/
+/DB1/DB1-war/build/
+/DB1/DB1-ejb/build/
+/DB1/DB1-ejb/dist/
