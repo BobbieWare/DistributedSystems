@@ -9,6 +9,5 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface RMIGreeting extends Remote{
-    public String getGreeting() throws RemoteException;
-    public void setGreeting(String message) throws RemoteException;
+    public boolean haveGuess(int number) throws RemoteException;
 }

@@ -15,5 +15,5 @@ import javax.ejb.Remote;
 public interface StudentLogic
 {
     public void addStudent(int id, String fName, String lName) throws SQLException, ClassNotFoundException;
-    public ResultSet showStudents(int id) throws SQLException, ClassNotFoundException;
+    public ResultSet showStudent(int id) throws SQLException, ClassNotFoundException;
 }
