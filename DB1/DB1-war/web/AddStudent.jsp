@@ -9,7 +9,10 @@
 <html>
     <body bgcolor="black">       
         <jsp:useBean id = "studentBean" class="Beans.StudentBean"></jsp:useBean>
-        
+        <%
+            studentBean.addStudent(Integer.parseInt(request.getParameter("id")), request.getParameter("fName"), request.getParameter("lName"));
+            %>
+            <p>Student added to table</p>
         
         
     </body>

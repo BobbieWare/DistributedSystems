@@ -4,10 +4,17 @@
     Author     : Bob
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:useBean id = "studentBean" class="Beans.StudentBean"></jsp:useBean>
+
+            <%
+                ResultSet rs = studentBean.showStudent(request.getParameter("id"));
+            
+                out.print(rs.getString(firstName) + rs.getString(lastName));
+            %>
     </body>
 </html>
