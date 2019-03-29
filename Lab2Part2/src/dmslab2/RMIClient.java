@@ -27,7 +27,7 @@ public class RMIClient
 			RMIGreeting remoteProxy = (RMIGreeting) registry.lookup("randomNumberRMI");
 			Scanner input = new Scanner(System.in);
 			boolean guess = false;
-			while (guess)
+			while (!guess)
 			{
 				System.out.println("Enter a random number as a guess: ");
 				int message = input.nextInt();
