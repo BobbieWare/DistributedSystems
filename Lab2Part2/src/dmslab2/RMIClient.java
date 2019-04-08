@@ -24,7 +24,7 @@ public class RMIClient
 		{
 			Registry registry = LocateRegistry.getRegistry();
 			System.out.println("Registry is created...");
-			RMIGreeting remoteProxy = (RMIGreeting) registry.lookup("randomNumberRMI");
+			RMIGuessRand remoteProxy = (RMIGuessRand) registry.lookup("randomNumberRMI");
 			Scanner input = new Scanner(System.in);
 			boolean guess = false;
 			while (!guess)
