@@ -50,9 +50,9 @@ public class MyServlet extends HttpServlet
             else
             {
                 message += " was too high";
-            }            
+            }
         }
-        
+
         session.setAttribute("counter", randNum);
         // set response headers before returning any message content
         response.setContentType("text/html");

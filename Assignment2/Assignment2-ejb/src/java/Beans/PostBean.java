@@ -14,7 +14,7 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class StatelessBean
+public class PostBean
 {
 
     // Add business logic below. (Right-click in editor and choose
