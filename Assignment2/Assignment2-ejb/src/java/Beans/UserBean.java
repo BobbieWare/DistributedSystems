@@ -10,36 +10,53 @@ import javax.ejb.LocalBean;
  * @author Bob
  */
 @Stateless
-@LocalBean
 public class UserBean
 {
 
-    public void addUser(String username) throws SQLException, ClassNotFoundException
+    /**
+     *
+     * @param username
+     */
+    public void addUser(String username)
     {
-        String driverURL = "org.apache.derby.jdbc.EmbeddedDriver";
-        // The dbURL to contain the Database URL
-        String dbURL = "jdbc:derby://localhost:1527/SocialMediaDB;"
-                + "create=true;user=bw;password=bw";
+        try
+        {
+            String driverURL = "org.apache.derby.jdbc.EmbeddedDriver";
+            // The dbURL to contain the Database URL
+            String dbURL = "jdbc:derby://localhost:1527/SocialMediaDB;"
+                    + "create=true;user=bw;password=bw";
 
-        // Creating SQL query string
-        String sqlQuery;
-        int resultDB;
+            // Creating SQL query string
+            String sqlQuery;
+            int resultDB;
 
-        // Step 1: Loading the drivers for JAVA DB
-        Class.forName(driverURL);
+            // Step 1: Loading the drivers for JAVA DB
+            Class.forName(driverURL);
 
-        Connection connection = DriverManager.getConnection(dbURL);
+            Connection connection = DriverManager.getConnection(dbURL);
 
-        // Creating the SQL Statement
-        Statement statement = connection.createStatement();
+            // Creating the SQL Statement
+            Statement statement = connection.createStatement();
 
-        // Inserting a record in the User table in the DB
-        sqlQuery = "INSERT INTO STUDENT VALUES"
-                + "(" + username + "')";
-        resultDB = statement.executeUpdate(sqlQuery);
+            // Inserting a record in the User table in the DB
+            sqlQuery = "INSERT INTO STUDENT VALUES"
+                    + "(" + username + "')";
+            resultDB = statement.executeUpdate(sqlQuery);
+        } catch (SQLException e)
+        {
+            System.out.println("Could not connect to db " + e.getMessage());
+        } catch (ClassNotFoundException e)
+        {
+            System.out.println("Class not found " + e.getMessage());
+        }
+
     }
 
-    public ArrayList<String> getUsernames() throws SQLException, ClassNotFoundException
+    /**
+     *
+     * @return
+     */
+    public ArrayList<String> getUsernames()
     {
         ArrayList<String> usernames = new ArrayList<>();
 
@@ -76,6 +93,11 @@ public class UserBean
         } catch (ClassNotFoundException e)
         {
             System.out.println("Class not found " + e.getMessage());
+        }
+        
+        if (usernames.size() == 0)
+        {
+            usernames.add("No one");
         }
 
         return usernames;

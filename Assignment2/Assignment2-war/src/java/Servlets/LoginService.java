@@ -3,6 +3,7 @@ package Servlets;
 import Beans.CounterBean;
 import Beans.UserBean;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +19,8 @@ public class LoginService extends HttpServlet
 {
 
     @EJB
-    CounterBean counterBean;
-    UserBean userBean;
+    private CounterBean counterBean;
+    private UserBean userBean;
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -45,7 +46,18 @@ public class LoginService extends HttpServlet
         }
         else
         {
-            request.setAttribute("usernames", userBean.getUsernames());
+            ArrayList<String> usernames = userBean.getUsernames();
+            
+            if (!usernames.contains(username) || usernames.contains("No one"))
+            {
+                userBean.addUser(username);
+                counterBean.incUserCount();
+                request.setAttribute("newMember", "<p style=\"color : blue;\">Welcome to this Social Media Website</p>");
+            }
+            
+            RequestDispatcher view = request.getRequestDispatcher("userHomePage.jsp");
+
+            view.forward(request, response);
         }
         
     }
