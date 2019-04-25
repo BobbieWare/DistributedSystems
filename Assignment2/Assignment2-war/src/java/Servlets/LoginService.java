@@ -2,6 +2,7 @@ package Servlets;
 
 import Beans.CounterBean;
 import Beans.UserBean;
+import Beans.UserBeanRemote;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.ejb.EJB;
@@ -19,8 +20,9 @@ public class LoginService extends HttpServlet
 {
 
     @EJB
-    private CounterBean counterBean;
     private UserBean userBean;
+    @EJB
+    private CounterBean counterBean;
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -34,6 +36,7 @@ public class LoginService extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        
         String username = request.getParameter("username");
 
         // If the username does not match the required format, return to login page and display an error
@@ -52,8 +55,15 @@ public class LoginService extends HttpServlet
             {
                 userBean.addUser(username);
                 counterBean.incUserCount();
-                request.setAttribute("newMember", "<p style=\"color : blue;\">Welcome to this Social Media Website</p>");
+                request.setAttribute("ifNew", "true");
+                request.setAttribute("newMember", "<p style=\"color : blue;\">Thank you for joining this Social Media Website</p>");
             }
+            else
+            {
+                request.setAttribute("ifNew", "false");
+            }
+            
+            request.setAttribute("username", username);
             
             RequestDispatcher view = request.getRequestDispatcher("userHomePage.jsp");
 

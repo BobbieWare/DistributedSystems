@@ -14,18 +14,17 @@
     </head>
     <body>
         <h1>Users</h1>
-
-        <jsp:useBean id="userBean" class="Beans.UserBean">
-            <%
-                ArrayList<String> usernames = userBean.getUsernames();
-
-                for (String username : usernames)
+        
+        <%
+            if (Boolean.valueOf(request.getAttribute("ifNew").toString()))
                 {
-                    out.print(username);
-                }
-            %> 
+                    out.println(request.getAttribute("newMember"));
+                }   
 
-        </jsp:useBean>
+                out.println("Welcome " + request.getAttribute("username"));
+            %>
+
+       
         
         <jsp:useBean id="counterBean" class="Beans.CounterBean">
         </jsp:useBean>

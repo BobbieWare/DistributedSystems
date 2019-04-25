@@ -19,9 +19,7 @@
             if (!(request.getAttribute("error") == null))
                 {
                      out.print(request.getAttribute("error"));
-                }
-            
-            
+                }           
             %>
 
         <p>Please enter your username: </p>
