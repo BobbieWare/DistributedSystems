@@ -15,6 +15,7 @@
     <body>
         <h1>Login</h1>
 
+        
         <%
             if (!(request.getAttribute("error") == null))
                 {
