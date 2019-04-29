@@ -16,6 +16,10 @@
         <servlet-name>PostService</servlet-name>
         <servlet-class>Servlets.PostService</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutService</servlet-name>
+        <servlet-class>Servlets.LogoutService</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet2</servlet-name>
         <url-pattern>/Servlet2</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>PostService</servlet-name>
         <url-pattern>/PostService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutService</servlet-name>
+        <url-pattern>/LogoutService</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

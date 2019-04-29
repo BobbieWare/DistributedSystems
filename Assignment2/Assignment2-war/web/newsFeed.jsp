@@ -9,9 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>News</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>News Feed</h1>
+
+        <%
+            if (session == null)
+            {
+                response.sendRedirect("login.jsp");
+                return;
+            }
+        %>
+
+
+        <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
     </body>
 </html>

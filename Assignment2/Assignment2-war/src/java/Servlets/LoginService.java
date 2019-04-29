@@ -2,7 +2,6 @@ package Servlets;
 
 import Beans.CounterBean;
 import Beans.UserBean;
-import Beans.UserBeanRemote;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.ejb.EJB;
@@ -11,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -49,6 +49,7 @@ public class LoginService extends HttpServlet
         }
         else
         {
+            HttpSession session  = request.getSession();
             ArrayList<String> usernames = userBean.getUsernames();
             
             if (!usernames.contains(username) || usernames.contains("No one"))
@@ -63,7 +64,7 @@ public class LoginService extends HttpServlet
                 request.setAttribute("ifNew", "false");
             }
             
-            request.setAttribute("username", username);
+            session.setAttribute("username", username);
             
             RequestDispatcher view = request.getRequestDispatcher("userHomePage.jsp");
 

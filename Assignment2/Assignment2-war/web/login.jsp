@@ -29,5 +29,7 @@
             <input type="text" name="username" value="" size="8" /> (Max 8 characters, only letters or numbers) <br><br>
             <input type="submit" value="Login" />
         </form>
+        
+        <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
     </body>
 </html>

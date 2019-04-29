@@ -16,15 +16,29 @@
         <h1>Users</h1>
 
         <%
+            if (session == null)
+            {
+                response.sendRedirect("login.jsp");
+                return;
+            }
+        %>
+
+        <%
             if (Boolean.valueOf(request.getAttribute("ifNew").toString()))
             {
                 out.println(request.getAttribute("newMember"));
             }
 
-            out.println("Welcome " + request.getAttribute("username"));
+            out.println("Welcome " + session.getAttribute("username"));
         %>
 
-
+        <br>
+        
+        <button onclick="location.href = 'newPost.jsp'" type="button">Make a new Post</button><br>
+        
+        <button onclick="location.href = 'newsFeed.jsp'" type="button">Show Feed</button><br>
+        
+        <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
 
         <jsp:useBean id="counterBean" class="Beans.CounterBean">
             <%
