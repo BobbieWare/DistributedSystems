@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
 import javax.ejb.Startup;
@@ -20,12 +19,11 @@ import javax.ejb.Startup;
 public class CounterBean
 {
 
-    private int userCount;
-    private int hitCount;
-    private int postCount;
+    private int userCount = 0;
+    private int hitCount = 0;
+    private int postCount = 0;
     
-    @PostConstruct
-    public void init()
+    public void initCounts()
     {
         // Creating SQL query string
         String driverURL = "org.apache.derby.jdbc.EmbeddedDriver";
@@ -63,6 +61,10 @@ public class CounterBean
 
     public int getUserCount()
     {
+        if (userCount == 0)
+        {
+            initCounts();
+        }
         return userCount;
     }
 
@@ -73,6 +75,10 @@ public class CounterBean
 
     public int getPostCount()
     {
+        if (postCount == 0)
+        {
+            initCounts();
+        }
         return postCount;
     }
 

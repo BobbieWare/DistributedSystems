@@ -40,7 +40,7 @@ public class LoginService extends HttpServlet
         String username = request.getParameter("username");
 
         // If the username does not match the required format, return to login page and display an error
-        if (!username.matches("[a-zA-Z0-9]*"))
+        if (!username.matches("^[a-zA-Z0-9._-]{3,8}$"))
         {
             request.setAttribute("error", "<p style=\"color : red;\">Invalid Username, Please Try Again</p>");
             RequestDispatcher view = request.getRequestDispatcher("login.jsp");
@@ -58,6 +58,7 @@ public class LoginService extends HttpServlet
                 counterBean.incUserCount();
                 request.setAttribute("ifNew", "true");
                 request.setAttribute("newMember", "<p style=\"color : blue;\">Thank you for joining this Social Media Website</p>");
+                session.setAttribute("new", "true");
             }
             else
             {
@@ -65,6 +66,7 @@ public class LoginService extends HttpServlet
             }
             
             session.setAttribute("username", username);
+            session.setAttribute("userId", userBean.getUserID(username));
             
             RequestDispatcher view = request.getRequestDispatcher("userHomePage.jsp");
 

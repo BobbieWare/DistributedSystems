@@ -26,7 +26,7 @@
         <p>Please enter your username: </p>
 
         <form method="POST" action="LoginService">
-            <input type="text" name="username" value="" size="8" /> (Max 8 characters, only letters or numbers) <br><br>
+            <input type="text" name="username" value="" size="8" /> (Max 8 characters, Min 3, only letters or numbers) <br><br>
             <input type="submit" value="Login" />
         </form>
         

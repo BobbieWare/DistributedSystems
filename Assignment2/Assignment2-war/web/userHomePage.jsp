@@ -24,25 +24,29 @@
         %>
 
         <%
-            if (Boolean.valueOf(request.getAttribute("ifNew").toString()))
+            if (session.getAttribute("new") == "true")
             {
-                out.println(request.getAttribute("newMember"));
+                if (Boolean.valueOf(request.getAttribute("ifNew").toString()))
+                {
+                    out.println(request.getAttribute("newMember"));
+                }
+
+                out.println("Welcome " + session.getAttribute("username"));
+                session.setAttribute("new", "false");
             }
 
-            out.println("Welcome " + session.getAttribute("username"));
         %>
 
         <br>
-        
+
         <button onclick="location.href = 'newPost.jsp'" type="button">Make a new Post</button><br>
-        
+
         <button onclick="location.href = 'newsFeed.jsp'" type="button">Show Feed</button><br>
-        
+
         <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
 
         <jsp:useBean id="counterBean" class="Beans.CounterBean">
-            <%
-                counterBean.incHitCount();
+            <%                counterBean.incHitCount();
             %>
 
             <h1>App Tracker</h1>

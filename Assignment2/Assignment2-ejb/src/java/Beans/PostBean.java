@@ -27,6 +27,7 @@ public class PostBean
      *
      * @param title
      * @param content
+     * @param userID
      */
     public void addPost(String title, String content, String userID)
     {
@@ -90,7 +91,6 @@ public class PostBean
         {
             // Creating SQL query string
             String sqlQuery;
-            ResultSet resultDB;
 
             // Step 1: Loading the drivers for JAVA DB
             Class.forName(driverURL);
@@ -102,7 +102,7 @@ public class PostBean
 
             // Inserting a record in the User table in the DB
             sqlQuery = "SELECT * FROM POSTS";
-            resultDB = statement.executeQuery(sqlQuery);
+            postSet = statement.executeQuery(sqlQuery);
             
         } catch (SQLException e)
         {

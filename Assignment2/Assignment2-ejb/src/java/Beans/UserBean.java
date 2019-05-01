@@ -37,7 +37,7 @@ public class UserBean
             Class.forName(driverURL);
 
             Connection connection = DriverManager.getConnection(dbURL);
-            
+
             Statement statement = connection.createStatement();
 
             rs = statement.executeQuery(countQuery);
@@ -46,7 +46,7 @@ public class UserBean
 
             // Creating the SQL Statement
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-            preparedStatement.setString(1, nextUserId+"");
+            preparedStatement.setString(1, nextUserId + "");
             preparedStatement.setString(2, username);
 
             // Inserting a record in the User table in the DB;
@@ -108,5 +108,83 @@ public class UserBean
         }
 
         return usernames;
+    }
+
+    public int getUserID(String username)
+    {
+        int id = 0;
+
+        String driverURL = "org.apache.derby.jdbc.EmbeddedDriver";
+        // The dbURL to contain the Database URL
+        String dbURL = "jdbc:derby://localhost:1527/SocialMediaDB;"
+                + "create=true;user=bw;password=bw";
+        try
+        {
+            // Creating SQL query string
+            String sqlQuery;
+            ResultSet rs;
+            // Step 1: Loading the drivers for JAVA DB
+            Class.forName(driverURL);
+
+            Connection connection = DriverManager.getConnection(dbURL);
+
+            // Creating the SQL Statement
+            Statement statement = connection.createStatement();
+
+            // Inserting a record in the User table in the DB
+            sqlQuery = "SELECT USER_ID FROM USERS WHERE USERNAME = '" + username + "'";
+            rs = statement.executeQuery(sqlQuery);
+
+            rs.next();
+
+            id = rs.getInt("USER_ID");
+        } catch (SQLException e)
+        {
+            System.out.println("Could not connect to db " + e.getMessage());
+        } catch (ClassNotFoundException e)
+        {
+            System.out.println("Class not found " + e.getMessage());
+        }
+
+        return id;
+    }
+
+    public String getUserName(int id)
+    {
+        String username = "";
+
+        String driverURL = "org.apache.derby.jdbc.EmbeddedDriver";
+        // The dbURL to contain the Database URL
+        String dbURL = "jdbc:derby://localhost:1527/SocialMediaDB;"
+                + "create=true;user=bw;password=bw";
+        try
+        {
+            // Creating SQL query string
+            String sqlQuery;
+            ResultSet rs;
+            // Step 1: Loading the drivers for JAVA DB
+            Class.forName(driverURL);
+
+            Connection connection = DriverManager.getConnection(dbURL);
+
+            // Creating the SQL Statement
+            Statement statement = connection.createStatement();
+
+            // Inserting a record in the User table in the DB
+            sqlQuery = "SELECT USERNAME FROM USERS WHERE USER_ID = " + id;
+            rs = statement.executeQuery(sqlQuery);
+
+            rs.next();
+
+            username = rs.getString("USERNAME");
+        } catch (SQLException e)
+        {
+            System.out.println("Could not connect to db " + e.getMessage());
+        } catch (ClassNotFoundException e)
+        {
+            System.out.println("Class not found " + e.getMessage());
+        }
+
+        return username;
     }
 }

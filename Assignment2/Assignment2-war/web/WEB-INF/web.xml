@@ -20,6 +20,10 @@
         <servlet-name>LogoutService</servlet-name>
         <servlet-class>Servlets.LogoutService</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LikeService</servlet-name>
+        <servlet-class>Servlets.LikeService</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet2</servlet-name>
         <url-pattern>/Servlet2</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>LogoutService</servlet-name>
         <url-pattern>/LogoutService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LikeService</servlet-name>
+        <url-pattern>/LikeService</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
