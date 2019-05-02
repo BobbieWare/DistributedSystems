@@ -9,27 +9,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href=" style.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
+        <div class="container">
+            <h1 class="heading">Login</h1>
+            <div class="content">
+                <%
+                    if (!(request.getAttribute("error") == null))
+                    {
+                        out.print(request.getAttribute("error"));
+                    }
+                %>
 
-        
-        <%
-            if (!(request.getAttribute("error") == null))
-                {
-                     out.print(request.getAttribute("error"));
-                }           
-            %>
+                <p>Please enter your username: </p>
 
-        <p>Please enter your username: </p>
+                <form method="POST" action="LoginService">
+                    <input type="text" name="username" value="" size="8" /> (Max 8 characters, Min 3, only letters or numbers) <br><br>
+                    <input type="submit" value="Login" />
+                </form>
 
-        <form method="POST" action="LoginService">
-            <input type="text" name="username" value="" size="8" /> (Max 8 characters, Min 3, only letters or numbers) <br><br>
-            <input type="submit" value="Login" />
-        </form>
-        
-        <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
+                <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
+            </div>
+            <div class="content">
+                <jsp:useBean id="counterBean" class="Beans.CounterBean">
+                    <%                counterBean.incHitCount();
+                    %>
+
+                    <h1 class="heading">App Tracker</h1>
+                    <%
+                        out.print("<p>Hits on all pages: " + counterBean.getHitCount() + "</p>");
+                        out.print("<p>User Count: " + counterBean.getUserCount() + "</p>");
+                        out.print("<p>Page Count: " + counterBean.getPostCount() + "</p>");
+
+                    %>
+                </jsp:useBean>
+            </div>
+        </div>
     </body>
 </html>

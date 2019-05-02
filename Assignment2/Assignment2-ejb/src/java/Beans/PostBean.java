@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Beans;
 
 import java.sql.Connection;
@@ -15,7 +10,8 @@ import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 
 /**
- *
+ *  This EJB is used to logic for the POSTS table in the SQL database.
+ * 
  * @author Bob
  */
 @Stateless
@@ -24,10 +20,10 @@ public class PostBean
 {
 
     /**
-     *
+     * Adds a new post to the SQL database
      * @param title
      * @param content
-     * @param userID
+     * @param userID of poster
      */
     public void addPost(String title, String content, String userID)
     {
@@ -36,14 +32,14 @@ public class PostBean
         // The dbURL to contain the Database URL
         String dbURL = "jdbc:derby://localhost:1527/SocialMediaDB;"
                 + "create=true;user=bw;password=bw";
-        String sqlQuery = "INSERT INTO USERS(POST_ID, TITLE, CONTENT, LIKED_BY, USER_ID) values(?,?,?,?,?)";
+        String sqlQuery = "INSERT INTO POSTS(POST_ID, TITLE, CONTENT, LIKED_BY, USER_ID) values(?,?,?,?,?)";
         String countQuery = "SELECT COUNT(1) FROM POSTS";
         String likedBy = "0";
         try
         {
             int resultDB;
             ResultSet rs;
-            int nextUserId;
+            int nextPostId;
 
             // Step 1: Loading the drivers for JAVA DB
             Class.forName(driverURL);
@@ -54,11 +50,11 @@ public class PostBean
 
             rs = statement.executeQuery(countQuery);
             rs.next();
-            nextUserId = rs.getInt("1") + 1;
+            nextPostId = rs.getInt("1") + 1;
 
             // Creating the SQL Statement
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-            preparedStatement.setString(1, nextUserId+"");
+            preparedStatement.setString(1, nextPostId+"");
             preparedStatement.setString(2, title);
             preparedStatement.setString(3, content);
             preparedStatement.setString(4, likedBy);
@@ -68,7 +64,7 @@ public class PostBean
             resultDB = preparedStatement.executeUpdate();
         } catch (SQLException e)
         {
-            System.out.println("Could not connect to db " + e.getMessage());
+            System.out.println("SQL error: " + e.getMessage());
         } catch (ClassNotFoundException e)
         {
             System.out.println("Class not found " + e.getMessage());
@@ -77,8 +73,8 @@ public class PostBean
     }
 
     /**
-     *
-     * @return
+     * Creates a result set of all existing posts
+     * @return 
      */
     public ResultSet getPosts()
     {
@@ -106,7 +102,7 @@ public class PostBean
             
         } catch (SQLException e)
         {
-            System.out.println("Could not connect to db " + e.getMessage());
+            System.out.println("SQL error: " + e.getMessage());
         } catch (ClassNotFoundException e)
         {
             System.out.println("Class not found " + e.getMessage());
@@ -115,6 +111,11 @@ public class PostBean
         return postSet;
     }
     
+    /**
+     * Adds a user to the list of users that like a given post
+     * @param postID
+     * @param userID 
+     */
     public void likePost(String postID, String userID)
     {
          // Creating SQL query string
@@ -147,13 +148,18 @@ public class PostBean
             
         } catch (SQLException e)
         {
-            System.out.println("Could not connect to db " + e.getMessage());
+            System.out.println("SQL error: " + e.getMessage());
         } catch (ClassNotFoundException e)
         {
             System.out.println("Class not found " + e.getMessage());
         }
     }
     
+    /**
+     * Removes a user to the list of users that like a given post
+     * @param postID
+     * @param userID 
+     */
     public void unlikePost(String postID, String userID)
     {
          // Creating SQL query string
@@ -180,14 +186,14 @@ public class PostBean
 
             rs.next();
             String likedBy = rs.getString("LIKED_BY");
-            likedBy.replace(userID, "");
+            likedBy = likedBy.replace(userID, "");
             
             sqlQuery += "'" + likedBy + "' WHERE POST_ID = " + postID;
             resultFromQuery = statement.executeUpdate(sqlQuery);
             
         } catch (SQLException e)
         {
-            System.out.println("Could not connect to db " + e.getMessage());
+            System.out.println("SQL error: " + e.getMessage());
         } catch (ClassNotFoundException e)
         {
             System.out.println("Class not found " + e.getMessage());

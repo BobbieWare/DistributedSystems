@@ -10,7 +10,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Startup;
 
 /**
- *
+ * This EJB tracks the number of hits the pages has received, post count, and user count
  * @author Bob
  */
 @Singleton
@@ -23,6 +23,9 @@ public class CounterBean
     private int hitCount = 0;
     private int postCount = 0;
     
+    /**
+     * Fetches and assigns the post and user count
+     */
     public void initCounts()
     {
         // Creating SQL query string
@@ -52,7 +55,7 @@ public class CounterBean
             postCount = rs.getInt("1");
         } catch (SQLException e)
         {
-            System.out.println("Could not connect to db " + e.getMessage());
+            System.out.println("SQL error: " + e.getMessage());
         } catch (ClassNotFoundException e)
         {
             System.out.println("Class not found " + e.getMessage());

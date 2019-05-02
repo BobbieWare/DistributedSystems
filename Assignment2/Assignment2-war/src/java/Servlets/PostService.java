@@ -8,7 +8,6 @@ package Servlets;
 import Beans.CounterBean;
 import Beans.PostBean;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,10 +41,23 @@ public class PostService extends HttpServlet
             throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("userId");
+        String userId = "" + session.getAttribute("userId");
+        
+        String title = (String) request.getParameter("title");
+        String content = (String) request.getParameter("content");
 
-        postBean.addPost((String) request.getAttribute("title"), (String) request.getAttribute("content"), userId);
-        counterBean.incPostCount();
+        if (title.length() > 20 || title.length() == 0 || content.length() > 200 || content.length() == 0)
+        {
+            request.setAttribute("message", "Invalid post, please try again");
+            request.setAttribute("showMessage", "true");
+        }
+        else
+        {
+            request.setAttribute("message", "Post submitted, thank you");
+            request.setAttribute("showMessage", "true");
+            postBean.addPost(title, content, userId);
+            counterBean.incPostCount();
+        }
 
         RequestDispatcher view = request.getRequestDispatcher("userHomePage.jsp");
         view.forward(request, response);
