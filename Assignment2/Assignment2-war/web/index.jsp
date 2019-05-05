@@ -1,10 +1,9 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%-- 
-    Document   : jsb1
+    Document   : Index Page
     Created on : Apr 17, 2019, 2:23:45 PM
     Author     : Bob
 --%>
-
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,14 +30,16 @@
             </div>
             <div class="content">
                 <jsp:useBean id="counterBean" class="Beans.CounterBean">
-                    <%                counterBean.incHitCount();
+                    <%                
+                        counterBean.incHitCount();
                     %>
 
+                    <%--This tracks the hit, post, and user count for the app--%>
                     <h1 class="heading">App Tracker</h1>
                     <%
                         out.print("<p>Hits on all pages: " + counterBean.getHitCount() + "</p>");
                         out.print("<p>User Count: " + counterBean.getUserCount() + "</p>");
-                        out.print("<p>Page Count: " + counterBean.getPostCount() + "</p>");
+                        out.print("<p>Post Count: " + counterBean.getPostCount() + "</p>");
 
                     %>
                 </jsp:useBean>

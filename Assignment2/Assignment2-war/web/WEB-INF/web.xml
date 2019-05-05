@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Servlet2</servlet-name>
-        <servlet-class>Servlet2</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Servlet3</servlet-name>
-        <servlet-class>Servlet3</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginService</servlet-name>
         <servlet-class>Servlets.LoginService</servlet-class>
     </servlet>
@@ -24,14 +16,6 @@
         <servlet-name>LikeService</servlet-name>
         <servlet-class>Servlets.LikeService</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>Servlet2</servlet-name>
-        <url-pattern>/Servlet2</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Servlet3</servlet-name>
-        <url-pattern>/Servlet3</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginService</servlet-name>
         <url-pattern>/LoginService</url-pattern>

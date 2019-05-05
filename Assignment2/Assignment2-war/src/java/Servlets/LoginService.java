@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * Checks if user name is valid, if not returns to login page. 
+ * If the user is not stored already then it adds them to the database.
+ * Then forwards users to the homepage.
+ * 
  * @author Bob
  */
 public class LoginService extends HttpServlet

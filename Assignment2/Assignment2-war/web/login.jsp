@@ -1,5 +1,5 @@
 <%-- 
-    Document   : jsp2
+    Document   : Login Page
     Created on : Apr 17, 2019, 2:23:59 PM
     Author     : Bob
 --%>
@@ -31,18 +31,20 @@
                     <input type="submit" value="Login" />
                 </form>
 
-                <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
+                <button onclick="location.href = 'index.jsp'" type="button">Return to Index</button>
             </div>
             <div class="content">
                 <jsp:useBean id="counterBean" class="Beans.CounterBean">
-                    <%                counterBean.incHitCount();
+                    <%                
+                        counterBean.incHitCount();
                     %>
 
+                    <%--This tracks the hit, post, and user count for the app--%>
                     <h1 class="heading">App Tracker</h1>
                     <%
                         out.print("<p>Hits on all pages: " + counterBean.getHitCount() + "</p>");
                         out.print("<p>User Count: " + counterBean.getUserCount() + "</p>");
-                        out.print("<p>Page Count: " + counterBean.getPostCount() + "</p>");
+                        out.print("<p>Post Count: " + counterBean.getPostCount() + "</p>");
 
                     %>
                 </jsp:useBean>

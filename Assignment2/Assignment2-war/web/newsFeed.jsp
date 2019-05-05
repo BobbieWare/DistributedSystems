@@ -1,5 +1,5 @@
 <%-- 
-    Document   : jsp5
+    Document   : News Feed
     Created on : Apr 17, 2019, 2:24:34 PM
     Author     : Bob
 --%>
@@ -36,38 +36,42 @@
                     </jsp:useBean>
                 </jsp:useBean>
 
+                <%--This function is used to display all the posts grabbed from the DB--%>
                 <%!
                     public String displayPosts(ResultSet posts, UserBean userBean, HttpSession session)
                     {
-                        String output = "";
+                        String output = ""; // String to be returned
                         try
                         {
-                            while (posts.next())
+                            while (posts.next()) 
                             {
-                                output += "<h2>" + posts.getString("title") + "</h2>";
-                                output += "<p>" + posts.getString("content") + "</p>";
-                                String userID = posts.getString("user_id");
+                                output += "<h2>" + posts.getString("title") + "</h2>"; // Display post title
+                                output += "<p>" + posts.getString("content") + "</p>"; // Post content
+                                String userID = posts.getString("user_id");            
                                 String userForPost = userBean.getUserName(Integer.parseInt(userID));
-                                output += "<p>Posted by: " + userForPost + "</p>";
+                                output += "<p>Posted by: " + userForPost + "</p>";     // and the User Name of the user who made the post
                                 String likes = posts.getString("liked_by");
                                 String[] users = likes.split(", ");
-                                output += "<p>Liked by: ";
+                                output += "<p>Liked by: ";                             // Gets a string of all the users who liked
                                 for (String user : users)
                                 {
-                                    if (!(user == "0"))
+                                    if (!(user == "0")) // 0 is a default like given to all posts
                                     {
-                                        output += " " + userBean.getUserName(Integer.parseInt(user));
+                                        output += " " + userBean.getUserName(Integer.parseInt(user)); // looks up each string ince split up
                                     }
                                 }
                                 output += "</p>";
                                 boolean found = false;
                                 String buttonLabel;
 
+                                // the following logic looks to see if the user has liked the post. If so then 
+                                // the button becoming an unlike button, otherwise a like button.
+                                
                                 for (String user : users)
                                 {
                                     if (user.equals(session.getAttribute("userId") + ""))
                                     {
-                                        found = true;
+                                        found = true;  
                                     }
                                 }
                                 if (found)
@@ -91,20 +95,22 @@
                         }
                         return output;
                     }
-                                                                                                                                                                    %>
+                                                                                                                                                                                                            %>
 
                 <button onclick="location.href = 'userHomePage.jsp'" type="button">Return to Home Page</button>
             </div>
             <div class="content">
                 <jsp:useBean id="counterBean" class="Beans.CounterBean">
-                    <%                counterBean.incHitCount();
+                    <%
+                        counterBean.incHitCount();
                     %>
 
+                    <%--This tracks the hit, post, and user count for the app--%>
                     <h1 class="heading">App Tracker</h1>
                     <%
                         out.print("<p>Hits on all pages: " + counterBean.getHitCount() + "</p>");
                         out.print("<p>User Count: " + counterBean.getUserCount() + "</p>");
-                        out.print("<p>Page Count: " + counterBean.getPostCount() + "</p>");
+                        out.print("<p>Post Count: " + counterBean.getPostCount() + "</p>");
 
                     %>
                 </jsp:useBean>

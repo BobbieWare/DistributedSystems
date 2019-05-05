@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.ejb.Singleton;
+import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
+import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 /**
@@ -14,14 +15,22 @@ import javax.ejb.Startup;
  * @author Bob
  */
 @Singleton
-@LocalBean
 @Startup
+@LocalBean
 public class CounterBean
 {
 
-    private int userCount = 0;
-    private int hitCount = 0;
-    private int postCount = 0;
+    private int userCount;
+    private int hitCount;
+    private int postCount;
+    
+    @PostConstruct
+    void init()
+    {
+        userCount = 0;
+        hitCount = 0;
+        postCount = 0;
+    }    
     
     /**
      * Fetches and assigns the post and user count
