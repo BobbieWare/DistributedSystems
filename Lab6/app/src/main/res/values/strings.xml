@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab6_NumGame</string>
+    <string name="title">Guess Numbers Games</string>
+    <string name="rule_title">Game\'s Rules</string>
+    <string name="game_rules">I\'m thinking of a number between 0-99.
+        Guess the number.
+        I will tell you if your guess is higher or lower
+        than the number.
+    </string>
+</resources>
