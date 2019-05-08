@@ -8,6 +8,6 @@ package dmslab2;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface RMIGreeting extends Remote{
+public interface RMIGuessRand extends Remote{
     public boolean haveGuess(int number) throws RemoteException;
 }

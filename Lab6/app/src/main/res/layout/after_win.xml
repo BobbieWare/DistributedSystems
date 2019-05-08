@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:text="You win!!!"
+        android:textAppearance="@android:style/TextAppearance.Material.Display1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textTitle"
+        android:textColor="#ffe64a19"
+        android:paddingLeft="5dp" />
+    <TextView
+        android:text="What would you like to do now:"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading"
+        android:layout_below="@id/textTitle"
+        android:paddingLeft="10dp" />
+    <Button
+        android:id="@+id/againButton"
+        android:text="Play again"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/heading"
+        android:layout_alignParentLeft="true"
+        android:onClick="againButtonClicked" />
+    <Button
+        android:id="@+id/exitButton"
+        android:text="End Game"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/heading"
+        android:layout_alignParentRight="true"
+        android:onClick="exitButtonClicked" />
+</RelativeLayout>

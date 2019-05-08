@@ -15,7 +15,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RMIServer implements RMIGreeting
+public class RMIServer implements RMIGuessRand
 {
 
     private int randNum;
@@ -52,7 +52,7 @@ public class RMIServer implements RMIGreeting
         try
         {
             System.out.println("RMIServer: Creating the UnicasteRemoteObject...");
-            RMIGreeting stub = (RMIGreeting) UnicastRemoteObject.exportObject(remoteObject, 0);
+            RMIGuessRand stub = (RMIGuessRand) UnicastRemoteObject.exportObject(remoteObject, 0);
             System.out.println("RMIServer: Creating the Registry...");
             Registry registry = LocateRegistry.getRegistry();
             System.out.println("RMIServer: Registring the Remote object with name randomNumberRMI...");

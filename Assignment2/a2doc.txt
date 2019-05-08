@@ -1,0 +1,41 @@
+For this assignment I design a social media application. 
+
+It allows users to do the following things:
+
+Login using a username.
+Make a post to the site.
+View all posts made.
+Like posts.
+Unlike posts.
+
+It contains the following pages:
+
+index - the front pages users see
+login - users enter a username and logs them in potentially adding them to the db
+userhomepage - allows users to decide an action to take
+newpost - users enter infomation for a new post to be created
+newsfeed - shows all posts on the db and allows user to like or unlike the post
+
+It contains the following servlets:
+
+loginservice - validates login info and adds to db
+logoutservie - removes data from session
+likeservice - call on logic for liking and unlking
+postservice - call on logic for making a post
+
+It contains the following beans:
+
+userbean - contains logic for adding, getting all, and getting usernames or userIDs from names or ids
+postbean - contains logic for adding, getting all , and likeing or unliking posts
+counterbean - a singleton bean which counts how many pages have been viewed from the app, also the user and post count
+
+For this project please load in the assignment 2 application into NetBeans.
+
+For the SQL data base I have included two file which can be used in netbeans to generate the required tables. 
+These files are POSTS sql structure and USER sql structure.
+
+The only other thing to be changed is the url for the database, this will be based off of whatever you will call 
+the db that you create. This is needed to be changed at all location where dbURL is found.
+
+Name: Bobbie Ware
+ID: 17962233
