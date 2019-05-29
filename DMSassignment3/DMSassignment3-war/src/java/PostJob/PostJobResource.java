@@ -1,0 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package PostJob;
+
+import Beans.JobProducer;
+import Job.Job;
+import java.net.URI;
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+
+/**
+ * REST Web Service
+ *
+ * @author Bob
+ */
+@Path("/postJob")
+@RequestScoped
+public class PostJobResource
+{
+
+    @EJB 
+    JobProducer jobProducer;
+    
+    /**
+     * Creates a new instance of PostJobResource
+     */
+    public PostJobResource()
+    {
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response getHtml(@FormParam("jobTitle") String jobTitle, @FormParam("jobMessage") String message, @FormParam("jobGivenById") int id)
+    {
+        Job job = new Job(jobTitle, message, id);
+        jobProducer.sendJMSMessageToJobQueue(job);
+        URI uri = UriBuilder.fromUri("http://localhost:8080/DMSassignment3Producer-war/jobSent.jsp").build();
+        return Response.seeOther(uri).build();
+    }
+}
