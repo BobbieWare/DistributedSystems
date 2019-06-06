@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="java.RESTfulConsume">
+  <ClassDiagramComponents>
+    <Class name="ApplicationConfig" package="RESTfulConsume" visibility="public" xPosition="-40.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getClasses" returnType="Set&lt;Class&lt;?&gt;&gt;" visibility="public"/>
+        <Method name="addRestResourceClasses" returnType="void" visibility="private">
+          <Argument type="Set&lt;Class&lt;?&gt;&gt;" name="resources"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="getHighPriorityJobResource" package="RESTfulConsume" visibility="public" xPosition="1.0" yPosition="179.0">
+      <Fields>
+        <Field name="highPriorityJobConsumer" type="HighPriorityJobConsumer" visibility="package"/>
+        <Field name="context" type="UriInfo" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getHtml" returnType="Response" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="getJobResource" package="RESTfulConsume" visibility="public" xPosition="353.0" yPosition="20.0">
+      <Fields>
+        <Field name="jobConsumer" type="JobConsumer" visibility="package"/>
+        <Field name="context" type="UriInfo" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getHtml" returnType="Response" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

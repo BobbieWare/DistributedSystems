@@ -1,27 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Job;
 
 import javax.xml.bind.annotation.*;
 
 /**
- *
+ * This class is a representation of a job object, containing the required information for a job.
+ * It also has the relevant xml tags for marshalling and unmarshalling.
+ * 
  * @author Bob
  */
 @XmlRootElement(name="job")
 public class Job
 {
     @XmlAttribute(name = "title")
-    private String title;
+    public String title;
     
     @XmlAttribute(name = "message")
-    private String message;
+    public String message;
     
     @XmlAttribute(name = "givenById")
-    private int givenById;
+    public int givenById;
 
     public Job(String title, String message, int givenById)
     {

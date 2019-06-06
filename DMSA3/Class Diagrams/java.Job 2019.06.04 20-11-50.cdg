@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="java.Job">
+  <ClassDiagramComponents>
+    <Class name="Job" package="Job" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="title" type="String" visibility="public"/>
+        <Field name="message" type="String" visibility="public"/>
+        <Field name="givenById" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="message"/>
+          <Argument type="int" name="givenById"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="XMLJob" package="Job" visibility="public" xPosition="20.0" yPosition="243.0">
+      <Fields>
+        <Field name="job" type="File" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="File" name="job"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="XMLtoJob" package="Job" visibility="public" xPosition="381.0" yPosition="58.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="jobToXml" returnType="Job" visibility="public" isStatic="true">
+          <Argument type="File" name="file"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="Job.XMLtoJob" target="Job.Job" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

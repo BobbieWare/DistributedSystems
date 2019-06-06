@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Beans;
 
 import Job.Job;
@@ -18,7 +13,8 @@ import javax.jms.JMSContext;
 import javax.jms.Queue;
 
 /**
- *
+ * The stateless bean carrys out getting a high priority job object from its destination queue.
+ * 
  * @author Bob
  */
 @Stateless
@@ -28,21 +24,21 @@ public class HighPriorityJobConsumer
 
     @Inject
     private JMSContext context;
-    @Resource(lookup = "jms/highPriorityJobQueue")
+    @Resource(lookup = "jms/highPriorityQueue")
     private Queue queue;
 
     public Job getJob()
     {
         Job receivedJob = null;
-        XMLJob xJob = new XMLJob();
+        XMLJob xJob = new XMLJob(); // empty object to fill with an xml job
         try
         {
             JMSConsumer receiver = context.createConsumer(queue);
-            xJob.job = receiver.receiveBody(File.class, 1000);
+            xJob.job = receiver.receiveBody(File.class, 1000);  // gives 1 second to return a job, else there isnt on on the queue
 
             if (xJob.job != null)
             {
-                receivedJob = XMLtoJob.jobToXml(xJob.job);
+                receivedJob = XMLtoJob.jobToXml(xJob.job);  // converts xml to a high priority job object
             }
             else
             {

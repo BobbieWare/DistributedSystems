@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="java.Job">
+  <ClassDiagramComponents>
+    <Class name="Job" package="Job" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="title" type="String" visibility="public"/>
+        <Field name="message" type="String" visibility="public"/>
+        <Field name="givenById" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="message"/>
+          <Argument type="int" name="givenById"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="JobToXml" package="Job" visibility="public" xPosition="374.0" yPosition="58.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="jobToXml" returnType="File" visibility="public" isStatic="true">
+          <Argument type="Job" name="job"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="Job.JobToXml" target="Job.Job" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

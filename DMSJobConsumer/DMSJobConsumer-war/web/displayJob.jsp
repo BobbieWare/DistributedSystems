@@ -18,9 +18,9 @@
                 <h1>Jobs</h1>
             </div>
             <div class="content"><p>
-                    <% out.print(request.getParameter("title"));
-                        out.print(request.getParameter("message"));
-                        out.print(request.getParameter("id"));
+                    <% out.println("<p>Job Title: " + request.getParameter("title")+ "</p>");
+                        out.println("<p>Job description: " + request.getParameter("message")+ "</p>");
+                        out.println("<p>Given by id: " + request.getParameter("id")+ "</p>");
                     %>
                 </p>
 

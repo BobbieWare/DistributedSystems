@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="java.RESTfulProduce">
+  <ClassDiagramComponents>
+    <Class name="ApplicationConfig" package="RESTfulProduce" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getClasses" returnType="Set&lt;Class&lt;?&gt;&gt;" visibility="public"/>
+        <Method name="addRestResourceClasses" returnType="void" visibility="private">
+          <Argument type="Set&lt;Class&lt;?&gt;&gt;" name="resources"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PostHighPrioJobResource" package="RESTfulProduce" visibility="public" xPosition="20.0" yPosition="171.0">
+      <Fields>
+        <Field name="jobProducer" type="HighPriorityJobProducer" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getHtml" returnType="Response" visibility="public">
+          <Argument type="String" name="jobTitle"/>
+          <Argument type="String" name="message"/>
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PostJobResource" package="RESTfulProduce" visibility="public" xPosition="420.0" yPosition="20.0">
+      <Fields>
+        <Field name="jobProducer" type="JobProducer" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getHtml" returnType="Response" visibility="public">
+          <Argument type="String" name="jobTitle"/>
+          <Argument type="String" name="message"/>
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

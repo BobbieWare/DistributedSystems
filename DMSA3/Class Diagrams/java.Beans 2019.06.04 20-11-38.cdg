@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="java.Beans">
+  <ClassDiagramComponents>
+    <Class name="HighPriorityJobConsumer" package="Beans" visibility="public" xPosition="116.0" yPosition="20.0">
+      <Fields>
+        <Field name="context" type="JMSContext" visibility="private"/>
+        <Field name="queue" type="Queue" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getJob" returnType="Job" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JobConsumer" package="Beans" visibility="public" xPosition="358.0" yPosition="20.0">
+      <Fields>
+        <Field name="context" type="JMSContext" visibility="private"/>
+        <Field name="queue" type="Queue" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getJob" returnType="Job" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

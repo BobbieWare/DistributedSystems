@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Beans;
 
 import Job.Job;
@@ -18,7 +13,8 @@ import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 
 /**
- *
+ * Converts a job object into xml and posts it onto the queue. 
+ * 
  * @author Bob
  */
 @Stateless
@@ -26,7 +22,7 @@ import javax.jms.Queue;
 public class HighPriorityJobProducer
 {
 
-    @Resource(mappedName = "jms/highPriorityJobQueue")
+    @Resource(mappedName = "jms/highPriorityQueue")
     private Queue jobQueue;
 
     @Inject

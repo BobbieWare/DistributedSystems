@@ -1,6 +1,6 @@
 package RESTfulConsume;
 
-import Beans.JobConsumer;
+import Beans.HighPriorityJobConsumer;
 import Job.Job;
 import java.net.URI;
 import javax.ejb.EJB;
@@ -15,35 +15,36 @@ import javax.ws.rs.core.UriBuilder;
 
 /**
  * REST Web Service
- * 
- * RESTful interface for getting a job.
  *
+ * RESTful interface for getting a high priority job.
+ * 
  * @author Bob
  */
-@Path("/getJob")
-public class getJobResource
+@Path("/getHighPrioJob")
+public class getHighPriorityJobResource
 {
+    
     @EJB
-    JobConsumer jobConsumer;
+    HighPriorityJobConsumer highPriorityJobConsumer;      
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of getJobResource
+     * Creates a new instance of getHighPriorityJobResource
      */
-    public getJobResource()
+    public getHighPriorityJobResource()
     {
     }
 
     /**
-     * Produces the response from the EJB, either displays the job or says that it cannot find one.
+     * Produces the response from the EJB, either displays the high priority job or says that it cannot find one.
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
     public Response getHtml()
     {
-        Job job = jobConsumer.getJob();
+        Job job = highPriorityJobConsumer.getJob();
         
         if (job != null)
         {
@@ -57,6 +58,4 @@ public class getJobResource
         return Response.seeOther(uri).build();
         }
     }
-    
-    
 }

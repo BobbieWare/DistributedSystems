@@ -21,7 +21,7 @@
             </div>
             <div class="content">
                 <p>Your job was sent successfully</p>
-                <a href="jobProducer.html">Back</a>
+                <a href="index.html">Back</a>
             </div>
         </div>
     </body>

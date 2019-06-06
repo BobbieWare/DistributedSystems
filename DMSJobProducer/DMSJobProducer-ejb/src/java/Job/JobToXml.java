@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Job;
 
 import java.io.File;
 import javax.xml.bind.*;
 
 /**
- *
+ * This class carries out the marshalling of a an xml job representation.
+ * 
  * @author Bob
  */
 public class JobToXml

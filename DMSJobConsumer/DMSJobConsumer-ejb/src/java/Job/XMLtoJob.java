@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Job;
 
 import java.io.File;
@@ -11,7 +6,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 /**
- *
+ * This class carries out the unmarshalling of a an xml job representation.
+ * 
  * @author Bob
  */
 public class XMLtoJob
