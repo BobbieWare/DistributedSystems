@@ -15,7 +15,10 @@
     <body>
         <div class="container">
             <div class="content">
-                <h1>Jobs</h1>
+                <h1>Mega Corp Processing Plant</h1>
+            </div>
+            <div class="content">
+                <h2>Jobs</h2>
             </div>
             <div class="content"><p>
                     <% out.println("<p>Job Title: " + request.getParameter("title")+ "</p>");
@@ -26,6 +29,10 @@
 
                 <a href="index.html">Back</a>
             </div>
+            <footer class="foot">
+                <p>This app was developed by Bobbie Ware id:17962233</p>
+                <p>for Comp713 assignment 3. </p>
+            </footer>
         </div>
     </body>
 </html>

@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.jms.*;
 
 /**
- * The stateless bean carrys out gettign a job object from its destination queue.
+ * The stateless bean carrys out getting a job object from its destination queue.
  * 
  * @author Bob
  */
